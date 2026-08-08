@@ -2419,6 +2419,7 @@ body.light-mode .ad-slot {
         <a href="#fixtures">Fixtures</a>
         <a href="#opponent">Opponents</a>
         <a href="#news">News</a>
+        <a href="#match-reports">Reports</a>
         <a href="#poll">Poll</a>
         <a href="#transfers">Transfers</a>
         <a href="#stadium">Stadium</a>
@@ -2465,7 +2466,7 @@ body.light-mode .ad-slot {
           <div class="time-unit"><span id="cd-mins">00</span><small>Mins</small></div>
           <div class="time-unit"><span id="cd-secs">00</span><small>Secs</small></div>
         </div>
-        <div class="countdown-date">Next: Championship – check fixtures</div>
+        <div class="countdown-date">Result: Larin 72', Akachukwu 90+2'</div>
       </div>
 
 <script>
@@ -2485,7 +2486,7 @@ body.light-mode .ad-slot {
     if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
 
     if (diff <= 0) {
-      if (timerEl) timerEl.innerHTML = '<span style="font-size:1.15rem;color:#D71920;font-weight:700">Match Day</span>';
+      if (timerEl) timerEl.innerHTML = '<span style="font-size:1.15rem;color:#D71920;font-weight:700">FT 0–2</span>';
       return;
     }
 
@@ -2848,11 +2849,9 @@ body.light-mode .ad-slot {
           <div class="fixture-match">
             <span class="competition">Carabao Cup</span>
             <div class="teams">
-              <span class="away">Colchester United</span>
-              <span class="vs">vs</span>
-              <span class="home">Southampton</span>
+              <span class="away">Colchester United 0–2 Southampton</span>
             </div>
-            <span class="venue">Away • 17:30</span>
+            <span class="venue">FT • Away • Larin 72', Akachukwu 90+2'</span>
           </div>
           <a href="https://www.southamptonfc.com" target="_blank" rel="noopener" class="btn btn-sm">Match Centre</a>
         </div>
@@ -3005,7 +3004,7 @@ body.light-mode .ad-slot {
         <h2>Latest News</h2>
         <p>Men's Team updates</p>
       </div>
-                                    <div class="news-grid">
+                                          <div class="news-grid">
         <article class="news-card featured">
           <div class="news-tag">Full Time • 8 Aug 2026</div>
           <h3>Colchester United 0–2 Southampton</h3>
@@ -3188,6 +3187,35 @@ body.light-mode .ad-slot {
   <!-- Footer -->
   
   
+
+  <!-- Match Reports -->
+  <section class="section" id="match-reports">
+    <div class="container">
+      <div class="section-header">
+        <h2>Match Reports: Season 2026-2027</h2>
+        <p>Short reports from competitive matches</p>
+      </div>
+
+      <article class="news-card featured" style="margin-bottom:16px;max-width:720px;margin-left:auto;margin-right:auto">
+        <div class="news-tag">Carabao Cup • First Round</div>
+        <h3>Colchester United 0–2 Southampton</h3>
+        <p style="margin:10px 0;color:var(--grey-400);font-size:0.9rem">8 August 2026 • JobServe Community Stadium • Attendance 5,822</p>
+        <p>
+          Southampton opened the 2026/27 season with a professional 2-0 win away at Colchester United in the Carabao Cup.
+          The first half finished goalless, with Saints gradually taking control after the break.
+        </p>
+        <p style="margin-top:10px">
+          <strong>Cyle Larin</strong> broke the deadlock in the 72nd minute with a close-range header from Ryan Manning’s cross.
+          In stoppage time, substitute <strong>Romeo Akachukwu</strong> added a second after a through ball from Finn Azaz to seal the victory.
+        </p>
+        <p style="margin-top:10px">
+          Tonda Eckert’s side progress to the next round of the competition.
+        </p>
+        <span class="news-date">Full Time • Larin 72' • Akachukwu 90+2'</span>
+      </article>
+    </div>
+  </section>
+
   <!-- Support This Site -->
   
   <!-- Ad Slot: Bottom -->
@@ -3272,7 +3300,7 @@ body.light-mode .ad-slot {
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <p>© 2026 Unofficial Fan Site • Play Up Saints • Last updated: 8 Aug 2026 – Colchester 0-2 Saints (FT) • Larin & Akachukwu</p>
+        <p>© 2026 Unofficial Fan Site • Play Up Saints • Last updated: 8 Aug 2026 – Colchester 0-2 Saints • Match Reports section live</p>
       </div>
     </div>
   </footer>
@@ -3340,7 +3368,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const timerEl = document.getElementById('countdownTimer');
     if (!timerEl) return;
     if (diff <= 0) {
-      timerEl.innerHTML = '<span style="font-size:1.1rem;color:var(--red)">Match Day / Live</span>';
+      timerEl.innerHTML = '<span style="font-size:1.1rem;color:var(--red)">FT 0–2 / Live</span>';
       return;
     }
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -3553,7 +3581,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (diff <= 0) {
       if (timerEl) {
-        timerEl.innerHTML = '<span style="font-size:1.15rem;color:#D71920;font-weight:700;">Match Day</span>';
+        timerEl.innerHTML = '<span style="font-size:1.15rem;color:#D71920;font-weight:700;">FT 0–2</span>';
       }
       return;
     }
