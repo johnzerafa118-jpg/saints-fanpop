@@ -2422,6 +2422,9 @@ body.light-mode .ad-slot {
         <a href="#match-reports">Reports</a>
         <a href="#coach-comments">Coach</a>
         <a href="#tactical-note">Tactics</a>
+        <a href="#injury-board">Injuries</a>
+        <a href="#motm-poll">MotM</a>
+        <a href="#season-results">Results</a>
         <a href="#poll">Poll</a>
         <a href="#transfers">Transfers</a>
         <a href="#stadium">Stadium</a>
@@ -3311,6 +3314,96 @@ body.light-mode .ad-slot {
     </div>
   </section>
 
+
+  <!-- Season Results -->
+  <section class="section" id="season-results">
+    <div class="container">
+      <div class="section-header">
+        <h2>Season 2026/27 Results</h2>
+        <p>Competitive matches so far</p>
+      </div>
+      <div style="max-width:520px;margin:0 auto;overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:0.95rem">
+          <thead>
+            <tr style="border-bottom:2px solid var(--saints-red,#D71920);text-align:left">
+              <th style="padding:10px 8px">Date</th>
+              <th style="padding:10px 8px">Comp</th>
+              <th style="padding:10px 8px">Match</th>
+              <th style="padding:10px 8px">Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.08)">
+              <td style="padding:10px 8px;white-space:nowrap">8 Aug</td>
+              <td style="padding:10px 8px">Carabao Cup</td>
+              <td style="padding:10px 8px">Colchester (A)</td>
+              <td style="padding:10px 8px;font-weight:700;color:#4ade80">0–2 W</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.08);opacity:0.85">
+              <td style="padding:10px 8px;white-space:nowrap">16 Aug</td>
+              <td style="padding:10px 8px">Championship</td>
+              <td style="padding:10px 8px">Watford (A)</td>
+              <td style="padding:10px 8px;color:var(--grey-400)">–</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top:12px;font-size:0.85rem;color:var(--grey-400);text-align:center">Record: P1 W1 D0 L0 • Goals: 2–0</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MotM Poll -->
+  <section class="section" id="motm-poll">
+    <div class="container">
+      <div class="section-header">
+        <h2>Man of the Match</h2>
+        <p>Colchester United 0–2 Southampton • Your vote</p>
+      </div>
+      <div class="poll-box" style="max-width:420px;margin:0 auto;text-align:center">
+        <p style="margin-bottom:14px;color:var(--grey-400);font-size:0.95rem">Who was your MotM at Colchester?</p>
+        <div class="poll-options" id="motmOptions" style="display:flex;flex-direction:column;gap:10px">
+          <button type="button" class="poll-btn" data-choice="Cyle Larin">Cyle Larin (goal)</button>
+          <button type="button" class="poll-btn" data-choice="Romeo Akachukwu">Romeo Akachukwu (goal)</button>
+          <button type="button" class="poll-btn" data-choice="Ryan Manning">Ryan Manning (assist)</button>
+          <button type="button" class="poll-btn" data-choice="Daniel Peretz">Daniel Peretz</button>
+          <button type="button" class="poll-btn" data-choice="Other">Other</button>
+        </div>
+        <p id="motmChoice" style="margin-top:14px;font-weight:600;min-height:1.4em"></p>
+        <p id="motmNote" style="font-size:0.85rem;color:var(--grey-400)"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Injury Board -->
+  <section class="section" id="injury-board">
+    <div class="container">
+      <div class="section-header">
+        <h2>Injury & Availability</h2>
+        <p>Reported status • Update regularly</p>
+      </div>
+      <div style="max-width:520px;margin:0 auto">
+        <div style="margin-bottom:14px">
+          <h3 style="font-size:0.9rem;color:#f87171;margin-bottom:8px">Out / Unavailable</h3>
+          <ul style="list-style:none;padding:0;margin:0;line-height:1.7;font-size:0.95rem">
+            <li>• Taylor Harwood-Bellis — ankle</li>
+            <li>• Jan Bednarek — knee</li>
+            <li>• Kyle Walker-Peters — illness</li>
+            <li>• Gavin Bazunu — knee</li>
+            <li>• Albert Grønbæk — Achilles</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size:0.9rem;color:#4ade80;margin-bottom:8px">Available / Used</h3>
+          <ul style="list-style:none;padding:0;margin:0;line-height:1.7;font-size:0.95rem">
+            <li>• Cyle Larin — scored off the bench at Colchester</li>
+            <li>• Romeo Akachukwu — scored late at Colchester</li>
+            <li>• Squad depth shown in cup win</li>
+          </ul>
+        </div>
+        <p style="margin-top:14px;font-size:0.8rem;color:var(--grey-500);text-align:center">Always check official club channels for confirmed status.</p>
+      </div>
+    </div>
+  </section>
   <!-- Support This Site -->
   
   <!-- Ad Slot: Bottom -->
@@ -3395,7 +3488,7 @@ body.light-mode .ad-slot {
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <p>© 2026 Unofficial Fan Site • Play Up Saints • Last updated: 9 Aug 2026 – Akachukwu comments + interview video added</p>
+        <p>© 2026 Unofficial Fan Site • Play Up Saints • Last updated: 9 Aug 2026 – Results table, MotM poll, Injury board added</p>
       </div>
     </div>
   </footer>
@@ -3721,5 +3814,23 @@ document.addEventListener('DOMContentLoaded', () => {
   })();
 
 </script>
+
+<script>
+(function(){
+  var opts = document.querySelectorAll('#motmOptions .poll-btn');
+  var choiceEl = document.getElementById('motmChoice');
+  var noteEl = document.getElementById('motmNote');
+  if (!opts.length) return;
+  opts.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      opts.forEach(function(b){ b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      if (choiceEl) choiceEl.textContent = 'Your MotM: ' + btn.getAttribute('data-choice');
+      if (noteEl) noteEl.textContent = 'Thanks for voting. (Local only — not stored on a server.)';
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
