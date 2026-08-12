@@ -2459,6 +2459,19 @@ body.light-mode .ad-slot {
           <div class="next-match-opponent" style="font-size:1.15rem;font-weight:700;margin:6px 0">Watford (A) · Championship</div>
           <div class="next-match-time" style="color:#D71920;font-weight:700;font-size:1.05rem">Sun 16 Aug · 14:30 CET</div>
           <div style="margin-top:6px;font-size:0.9rem;opacity:0.85">Sky Sports · Away end sold out</div>
+
+        <div class="countdown-box" id="countdownBox" style="margin-top:18px;padding:16px 18px;background:rgba(0,0,0,0.35);border:1px solid rgba(215,25,32,0.35);border-radius:14px;max-width:340px;margin-left:auto;margin-right:auto;text-align:center">
+          <div class="countdown-label" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#f87171;margin-bottom:6px;font-weight:600">Countdown</div>
+          <div class="countdown-match" style="font-size:0.95rem;font-weight:600;margin-bottom:12px">Watford (A) <span style="color:var(--grey-400);font-weight:400">· Championship</span></div>
+          <div class="countdown-timer" id="countdownTimer" style="display:flex;gap:12px;justify-content:center;margin-bottom:8px">
+            <div class="time-unit" style="min-width:48px"><span id="cd-days" style="display:block;font-size:1.4rem;font-weight:700">00</span><small style="font-size:0.65rem;opacity:0.7">DAYS</small></div>
+            <div class="time-unit" style="min-width:48px"><span id="cd-hours" style="display:block;font-size:1.4rem;font-weight:700">00</span><small style="font-size:0.65rem;opacity:0.7">HRS</small></div>
+            <div class="time-unit" style="min-width:48px"><span id="cd-mins" style="display:block;font-size:1.4rem;font-weight:700">00</span><small style="font-size:0.65rem;opacity:0.7">MIN</small></div>
+            <div class="time-unit" style="min-width:48px"><span id="cd-secs" style="display:block;font-size:1.4rem;font-weight:700">00</span><small style="font-size:0.65rem;opacity:0.7">SEC</small></div>
+          </div>
+          <div class="countdown-date" style="font-size:0.8rem;opacity:0.8">Sun 16 Aug · 14:30 CET · Sky Sports</div>
+        </div>
+
         </div>
       </div>
     </div>
@@ -3758,7 +3771,7 @@ body.light-mode .ad-slot {
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <p>© 2026 Unofficial Fan Site • Play Up Saints • Last updated: 12 Aug 2026 – Next match = Watford (fixtures + countdown)</p>
+        <p>© 2026 Unofficial Fan Site • Play Up Saints • Last updated: 12 Aug 2026 – Visible Watford countdown added</p>
       </div>
     </div>
   </footer>
@@ -4099,6 +4112,36 @@ document.addEventListener('DOMContentLoaded', () => {
       if (noteEl) noteEl.textContent = 'Thanks for voting. (Local only — not stored on a server.)';
     });
   });
+})();
+</script>
+
+
+<script>
+(function(){
+  var target = new Date('2026-08-16T12:30:00Z').getTime(); // 16 Aug 13:30 UK / 14:30 CET
+  function tick(){
+    var daysEl = document.getElementById('cd-days');
+    var hoursEl = document.getElementById('cd-hours');
+    var minsEl = document.getElementById('cd-mins');
+    var secsEl = document.getElementById('cd-secs');
+    var timerEl = document.getElementById('countdownTimer');
+    if (!daysEl) return;
+    var diff = target - Date.now();
+    if (diff <= 0) {
+      if (timerEl) timerEl.innerHTML = '<span style="font-size:1.05rem;color:#D71920;font-weight:700">Kick-off · Good luck Saints</span>';
+      return;
+    }
+    var d = Math.floor(diff / 86400000); diff -= d * 86400000;
+    var h = Math.floor(diff / 3600000); diff -= h * 3600000;
+    var m = Math.floor(diff / 60000); diff -= m * 60000;
+    var s = Math.floor(diff / 1000);
+    daysEl.textContent = (d < 10 ? '0' : '') + d;
+    hoursEl.textContent = (h < 10 ? '0' : '') + h;
+    minsEl.textContent = (m < 10 ? '0' : '') + m;
+    secsEl.textContent = (s < 10 ? '0' : '') + s;
+  }
+  tick();
+  setInterval(tick, 1000);
 })();
 </script>
 
