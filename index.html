@@ -2390,7 +2390,7 @@ body.light-mode .ad-slot {
 <body>
 
   <div id="status-bar" style="background:linear-gradient(90deg,#8B0000,#D71920);color:#fff;text-align:center;padding:8px 12px;font-size:0.85rem;font-weight:600;letter-spacing:0.02em">
-    Championship opener · Watford (A) · Sun 16 Aug · 14:30 CET · On Sky Sports
+    Next: Watford (A) · Championship · Sun 16 Aug · 14:30 CET · Sky Sports
   </div>
 
   <!-- Header -->
@@ -2453,41 +2453,21 @@ body.light-mode .ad-slot {
       <h1>Play Up <span>Saints</span></h1>
 <p class="site-tagline" style="text-align:center;font-size:0.85rem;color:var(--grey-400);margin:6px 0 12px">Unofficial fan site for Southampton FC men · Not affiliated with the club</p>
       <p class="hero-sub">Home of Southampton Football Club Men's First Team. Founded 1885. St Mary's Stadium.</p>
-      <div class="hero-cta">
+            <div class="hero-cta">
         <a href="#fixtures" class="btn btn-primary">Next Match</a>
-        <a href="#squad" class="btn btn-outline">View Squad</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-num">1885</span>
-          <span class="stat-label">Founded</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">32,384</span>
-          <span class="stat-label">Capacity</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">Championship</span>
-          <span class="stat-label">League</span>
+        <div class="next-match-info" style="margin-top:14px;text-align:center">
+          <div class="next-match-opponent" style="font-size:1.15rem;font-weight:700;margin:6px 0">Watford (A) · Championship</div>
+          <div class="next-match-time" style="color:#D71920;font-weight:700;font-size:1.05rem">Sun 16 Aug · 14:30 CET</div>
+          <div style="margin-top:6px;font-size:0.9rem;opacity:0.85">Sky Sports · Away end sold out</div>
         </div>
       </div>
-
-      <div class="countdown-box" id="countdownBox">
-        <div class="countdown-label">Next Match</div>
-        <div class="countdown-match">Colchester United <span>(A)</span> • Carabao Cup</div>
-        <div class="countdown-timer" id="countdownTimer">
-          <div class="time-unit"><span id="cd-days">00</span><small>Days</small></div>
-          <div class="time-unit"><span id="cd-hours">00</span><small>Hours</small></div>
-          <div class="time-unit"><span id="cd-mins">00</span><small>Mins</small></div>
-          <div class="time-unit"><span id="cd-secs">00</span><small>Secs</small></div>
-        </div>
-        <div class="countdown-date">Result: Larin 72', Akachukwu 90+2'</div>
-      </div>
+    </div>
+  </section>
 
 <script>
 // Independent countdown - does not rely on other scripts
 (function() {
-  var target = new Date('2026-08-08T16:30:00Z').getTime(); // 8 Aug 2026 17:30 UK
+  var target = new Date('2026-08-16T12:30:00Z').getTime(); // 16 Aug 2026 13:30 UK / 14:30 CET Watford
 
   function tick() {
     var now = Date.now();
@@ -2501,7 +2481,7 @@ body.light-mode .ad-slot {
     if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
 
     if (diff <= 0) {
-      if (timerEl) timerEl.innerHTML = '<span style="font-size:1.15rem;color:#D71920;font-weight:700">FT 0–2</span>';
+      if (timerEl) timerEl.innerHTML = '<span style="font-size:1.05rem;color:#D71920;font-weight:700">Kick-off · Watford (A)</span>';
       return;
     }
 
@@ -2855,7 +2835,7 @@ body.light-mode .ad-slot {
         <p>Upcoming matches • Championship & Cups</p>
       </div>
       <div class="fixtures-list">
-        <div class="fixture-card next">
+        <div class="fixture-card">
           <div class="fixture-date">
             <span class="day">Sat</span>
             <span class="date">08 Aug</span>
@@ -2870,7 +2850,7 @@ body.light-mode .ad-slot {
           </div>
           <a href="https://www.southamptonfc.com" target="_blank" rel="noopener" class="btn btn-sm">Match Centre</a>
         </div>
-        <div class="fixture-card">
+        <div class="fixture-card next">
           <div class="fixture-date">
             <span class="day">Sun</span>
             <span class="date">16 Aug</span>
@@ -2883,7 +2863,7 @@ body.light-mode .ad-slot {
               <span class="vs">vs</span>
               <span class="home">Southampton</span>
             </div>
-            <span class="venue">Away • 14:30</span>
+            <span class="venue">Away • 14:30 CET · Sky Sports</span>
           </div>
           <a href="https://www.southamptonfc.com" target="_blank" rel="noopener" class="btn btn-sm">Match Centre</a>
         </div>
@@ -3022,7 +3002,7 @@ body.light-mode .ad-slot {
                                           <div class="news-grid">
         <article class="news-card featured">
           <div class="news-tag">Full Time • 8 Aug 2026</div>
-          <h3>Colchester United 0–2 W2 Southampton</h3>
+          <h3>Colchester United 0–2 Southampton</h3>
           <p><strong>Carabao Cup First Round</strong><br>
           Cyle Larin (72') • Romeo Akachukwu (90+2')<br>
           Saints win and progress to the next round.<br>
@@ -3778,7 +3758,7 @@ body.light-mode .ad-slot {
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <p>© 2026 Unofficial Fan Site • Play Up Saints • Last updated: 12 Aug 2026 – Watford follow box, MotM ready, injury check, status bar</p>
+        <p>© 2026 Unofficial Fan Site • Play Up Saints • Last updated: 12 Aug 2026 – Next match = Watford (fixtures + countdown)</p>
       </div>
     </div>
   </footer>
@@ -3838,8 +3818,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // Match Countdown - Colchester United 8 Aug 2026 17:30 UK
-  const nextMatch = new Date('2026-08-08T16:30:00Z'); // 17:30 BST = 16:30 UTC
+  // Match Countdown - Watford 16 Aug 2026 13:30 UK
+  const nextMatch = new Date('2026-08-16T12:30:00Z'); // 17:30 BST = 16:30 UTC
   function updateCountdown() {
     const now = new Date();
     let diff = nextMatch.getTime() - now.getTime();
@@ -4037,7 +4017,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 <script>
-// Independent countdown - Colchester United 8 Aug 2026 17:30 UK (16:30 UTC)
+// Independent countdown - Watford 16 Aug 2026 13:30 UK / 14:30 CET
 (function() {
   var target = new Date(Date.UTC(2026, 7, 8, 16, 30, 0)); // Month is 0-indexed: 7 = August
 
@@ -4059,7 +4039,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (diff <= 0) {
       if (timerEl) {
-        timerEl.innerHTML = '<span style="font-size:1.15rem;color:#D71920;font-weight:700;">FT 0–2</span>';
+        timerEl.innerHTML = '<span style="font-size:1.05rem;color:#D71920;font-weight:700">Watford (A) · 14:30 CET</span>';
       }
       return;
     }
