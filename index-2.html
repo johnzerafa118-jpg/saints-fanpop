@@ -2390,7 +2390,7 @@ body.light-mode .ad-slot {
 <body>
 
   <div id="status-bar" style="background:linear-gradient(90deg,#8B0000,#D71920);color:#fff;text-align:center;padding:8px 12px;font-size:0.85rem;font-weight:600;letter-spacing:0.02em">
-    Updated 11 Aug 2026 · Charles out · Mubama in · Next: Watford (A) · 16 Aug · 14:30 CET
+    FT · Watford 2–1 Saints · Next: Stoke (H) 22 Aug
   </div>
 
   <!-- Header -->
@@ -2421,6 +2421,10 @@ body.light-mode .ad-slot {
         <a href="#letissier">Le God</a>
         <a href="#freekicks">Free Kicks</a>
         <a href="#squad">Squad</a>
+        <a href="#watford-preview">Watford</a>
+        <a href="#match-report">Result</a>
+        <a href="#opponents">Opponents</a>
+        <a href="#eckert-pc">Eckert PC</a>
         <a href="#fixtures">Fixtures</a>
         <a href="#opponent">Opponents</a>
         <a href="#news">News</a>
@@ -2430,6 +2434,8 @@ body.light-mode .ad-slot {
         <a href="#injury-board">Injuries</a>
         <a href="#watford-videos">vs Watford</a>
         <a href="#academy">Academy</a>
+        <a href="#classic-videos">Classics</a>
+        <a href="#on-this-day">On This Day</a>
         <a href="#player-stats">Stats</a>
         <a href="#motm-poll">Poll</a>
         <a href="#season-results">Results</a>
@@ -2452,74 +2458,27 @@ body.light-mode .ad-slot {
       <h1>Play Up <span>Saints</span></h1>
 <p class="site-tagline" style="text-align:center;font-size:0.85rem;color:var(--grey-400);margin:6px 0 12px">Unofficial fan site for Southampton FC men · Not affiliated with the club</p>
       <p class="hero-sub">Home of Southampton Football Club Men's First Team. Founded 1885. St Mary's Stadium.</p>
-      <div class="hero-cta">
+            <div class="hero-cta">
         <a href="#fixtures" class="btn btn-primary">Next Match</a>
-        <a href="#squad" class="btn btn-outline">View Squad</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-num">1885</span>
-          <span class="stat-label">Founded</span>
+        <div class="next-match-info" style="margin-top:14px;text-align:center">
+          <div class="next-match-opponent" style="font-size:1.15rem;font-weight:700;margin:6px 0">Watford (A) · Championship</div>
+          <div class="next-match-time" style="color:#D71920;font-weight:700;font-size:1.05rem">Sun 16 Aug · 14:30 CET</div>
+          <div style="margin-top:6px;font-size:0.9rem;opacity:0.85">Sky Sports · Away end sold out</div>
+
+        
+        <div class="countdown-box" id="countdownBox" style="margin-top:18px;padding:16px 18px;background:rgba(0,0,0,0.35);border:1px solid rgba(215,25,32,0.35);border-radius:14px;max-width:360px;margin-left:auto;margin-right:auto;text-align:center">
+          <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#f87171;margin-bottom:6px;font-weight:600">Countdown</div>
+          <div style="font-size:0.95rem;font-weight:600;margin-bottom:12px">Watford (A) <span style="color:#9ca3af;font-weight:400">· Championship</span></div>
+          <div id="countdownTimer" style="display:flex;gap:14px;justify-content:center;margin-bottom:8px">
+            <div style="min-width:52px"><span id="cd-days" style="display:block;font-size:1.5rem;font-weight:700;line-height:1.2">--</span><small style="font-size:0.65rem;opacity:0.7">DAYS</small></div>
+            <div style="min-width:52px"><span id="cd-hours" style="display:block;font-size:1.5rem;font-weight:700;line-height:1.2">--</span><small style="font-size:0.65rem;opacity:0.7">HRS</small></div>
+            <div style="min-width:52px"><span id="cd-mins" style="display:block;font-size:1.5rem;font-weight:700;line-height:1.2">--</span><small style="font-size:0.65rem;opacity:0.7">MIN</small></div>
+            <div style="min-width:52px"><span id="cd-secs" style="display:block;font-size:1.5rem;font-weight:700;line-height:1.2">--</span><small style="font-size:0.65rem;opacity:0.7">SEC</small></div>
+          </div>
+          <div style="font-size:0.8rem;opacity:0.85">Sun 16 Aug · 14:30 CET · Sky Sports</div>
         </div>
-        <div class="stat">
-          <span class="stat-num">32,384</span>
-          <span class="stat-label">Capacity</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">Championship</span>
-          <span class="stat-label">League</span>
-        </div>
-      </div>
-
-      <div class="countdown-box" id="countdownBox">
-        <div class="countdown-label">Next Match</div>
-        <div class="countdown-match">Colchester United <span>(A)</span> • Carabao Cup</div>
-        <div class="countdown-timer" id="countdownTimer">
-          <div class="time-unit"><span id="cd-days">00</span><small>Days</small></div>
-          <div class="time-unit"><span id="cd-hours">00</span><small>Hours</small></div>
-          <div class="time-unit"><span id="cd-mins">00</span><small>Mins</small></div>
-          <div class="time-unit"><span id="cd-secs">00</span><small>Secs</small></div>
-        </div>
-        <div class="countdown-date">Result: Larin 72', Akachukwu 90+2'</div>
-      </div>
-
-<script>
-// Independent countdown - does not rely on other scripts
-(function() {
-  var target = new Date('2026-08-08T16:30:00Z').getTime(); // 8 Aug 2026 17:30 UK
-
-  function tick() {
-    var now = Date.now();
-    var diff = target - now;
-    var daysEl = document.getElementById('cd-days');
-    var hoursEl = document.getElementById('cd-hours');
-    var minsEl = document.getElementById('cd-mins');
-    var secsEl = document.getElementById('cd-secs');
-    var timerEl = document.getElementById('countdownTimer');
-
-    if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
-
-    if (diff <= 0) {
-      if (timerEl) timerEl.innerHTML = '<span style="font-size:1.15rem;color:#D71920;font-weight:700">FT 0–2</span>';
-      return;
-    }
-
-    var d = Math.floor(diff / 86400000);
-    diff -= d * 86400000;
-    var h = Math.floor(diff / 3600000);
-    diff -= h * 3600000;
-    var m = Math.floor(diff / 60000);
-    diff -= m * 60000;
-    var s = Math.floor(diff / 1000);
-
-    daysEl.textContent = (d < 10 ? '0' : '') + d;
-    hoursEl.textContent = (h < 10 ? '0' : '') + h;
-    minsEl.textContent = (m < 10 ? '0' : '') + m;
-    secsEl.textContent = (s < 10 ? '0' : '') + s;
-  }
-
-  tick();
-  setInterval(tick, 1000);
+        <script>
+// countdown handled by single script below
 })();
 </script>
 
@@ -2733,18 +2692,248 @@ body.light-mode .ad-slot {
   </section>
 
   
-  <!-- On This Day -->
-  <section class="section on-this-day" id="onthisday">
+
+  <!-- Watford Preview -->
+  <section class="section" id="watford-preview">
     <div class="container">
-      <div class="otd-box">
-        <div class="otd-label">On This Day in Saints History</div>
-        <h3>August moments</h3>
-        <ul class="otd-list">
-          <li><strong>1976</strong> – The greatest day: Bobby Stokes scores the winner as Second Division Saints beat Manchester United 1-0 in the FA Cup Final at Wembley.</li>
-          <li><strong>Classic</strong> – Matt Le Tissier’s wonder goals and one-club loyalty cemented “Le God” status for generations of supporters.</li>
-          <li><strong>Recent</strong> – Pre-season 2026 ended with a 2-1 win in Germany as the squad prepared for another Championship campaign.</li>
-        </ul>
+      <div class="section-header">
+        <h2>Watford Preview</h2>
+        <p>Championship opener · Sun 16 Aug · 14:30 CET</p>
       </div>
+      <article class="news-card" style="max-width:560px;margin:0 auto">
+        <div class="news-tag">Match preview</div>
+        <h3>Watford (A) · Vicarage Road</h3>
+        <p style="margin:10px 0;line-height:1.65;font-size:0.95rem">
+          First league game of the season. Saints travel with a four-point deduction already applied, a Carabao Cup win at Colchester in the bank, and a sold-out away end.
+        </p>
+        <ul style="list-style:none;padding:0;margin:12px 0;line-height:1.75;font-size:0.92rem">
+          <li>• <strong>TV:</strong> Sky Sports Main Event / Football</li>
+          <li>• <strong>Kick-off:</strong> 13:30 UK / 14:30 CET</li>
+          <li>• <strong>Context:</strong> Larin scored in the cup; Mubama available as a new option</li>
+          <li>• <strong>Focus:</strong> Start the league campaign with a result and a performance</li>
+        </ul>
+        <p style="font-size:0.85rem;color:var(--grey-500)">Unofficial fan preview. Always check official team news on the day.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="matchday">
+    <div class="container">
+      <div class="section-header">
+        <h2>Result · Watford (A)</h2>
+        <p>Championship opener · Sun 16 Aug 2026</p>
+      </div>
+      <article class="news-card" style="max-width:560px;margin:0 auto;border-color:rgba(215,25,32,0.4)">
+        <div class="news-tag">Today</div>
+        <h3>Watford vs Southampton</h3>
+        <p style="margin:10px 0;font-size:1.05rem;font-weight:600">13:30 UK · 14:30 CET · Sky Sports · Vicarage Road</p>
+        <p style="margin:8px 0;font-size:0.95rem;color:var(--grey-400)">
+          League season starts with a four-point deduction already applied. Away end sold out. Jander is the only fitness doubt (late call).
+        </p>
+        <p style="margin:8px 0;font-size:0.9rem;color:var(--grey-500)">
+          Team news / XI: check official channels closer to kick-off. FT score and short report will be added after the match.
+        </p>
+        <span class="news-date">Updated matchday morning</span>
+      </article>
+      <div style="max-width:560px;margin:14px auto 0;display:flex;flex-direction:column;gap:10px">
+        <article class="news-card">
+          <div class="news-tag">Team news</div>
+          <h3>Jander — only doubt</h3>
+          <p style="margin:8px 0;font-size:0.95rem;color:var(--grey-400)">Eckert: Caspar Jander could feature; rest of squad looking good and strong. Wider reports still list several longer-term absences.</p>
+        </article>
+        <article class="news-card">
+          <div class="news-tag">To watch</div>
+          <h3>Key themes</h3>
+          <p style="margin:8px 0;font-size:0.95rem;color:var(--grey-400)">Start on a quicker pitch · bench impact · Larin / Mubama minutes · Watford transitions</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="match-report">
+    <div class="container">
+      <div class="section-header">
+        <h2>Match Report</h2>
+        <p>Championship · Matchweek 1 · 16 Aug 2026</p>
+      </div>
+      <article class="news-card" style="max-width:560px;margin:0 auto;border-color:rgba(215,25,32,0.45)">
+        <div class="news-tag">Full time</div>
+        <h3 style="font-size:1.35rem;margin:8px 0">Watford 2–1 Southampton</h3>
+        <p style="margin:6px 0;font-size:0.95rem;color:var(--grey-400)">Vicarage Road · Att: 19,542 · Ref: Matt Donohue</p>
+        <p style="margin:12px 0 6px;font-size:0.95rem"><strong>Scorers</strong></p>
+        <ul style="list-style:none;padding:0;margin:0 0 12px;line-height:1.7;font-size:0.95rem">
+          <li>• Watford: Bravo 12', Nabizada 29'</li>
+          <li>• Southampton: Larin 56'</li>
+        </ul>
+        <p style="margin:8px 0;line-height:1.65;font-size:0.95rem;color:var(--grey-300)">
+          Watford led 2–0 at half-time. Larin pulled one back early in the second half after work from Bragg, but Saints could not force an equaliser. Opening-day defeat; the four-point deduction still applies.
+        </p>
+        <p style="margin:10px 0 0;font-size:0.9rem;color:var(--grey-500)">
+          <strong>Stats:</strong> Possession 41%–59% · Shots 14–9 · On target 4–2 · xG ~0.75–0.64
+        </p>
+        <span class="news-date">Next: Stoke City (H) · 22 Aug</span>
+      </article>
+    </div>
+  </section>
+
+
+  <section class="section" id="opponents">
+    <div class="container">
+      <div class="section-header">
+        <h2>Opponents</h2>
+        <p>Watford · Championship opener · 16 Aug 2026</p>
+      </div>
+      <div style="max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:12px">
+        <article class="news-card">
+          <div class="news-tag">Today’s opponent</div>
+          <h3>Watford FC</h3>
+          <p style="margin:8px 0;font-size:0.95rem;color:var(--grey-400)">
+            Vicarage Road · Head coach: Alessio Dionisi · Last season: 16th in the Championship (57 pts)
+          </p>
+        </article>
+        <article class="news-card">
+          <div class="news-tag">Recent form</div>
+          <h3>End of 2025/26 + pre-season</h3>
+          <p style="margin:8px 0;font-size:0.95rem;color:var(--grey-400)">
+            Finished last season with five straight league defeats (including 0–4 vs Coventry at home). Pre-season mixed. Carabao Cup: 1–0 win vs Crawley (late goal).
+          </p>
+        </article>
+        <article class="news-card">
+          <div class="news-tag">How they play</div>
+          <h3>What Eckert expects</h3>
+          <p style="margin:8px 0;font-size:0.95rem;color:var(--grey-400)">
+            Strong in transitions when the pitch opens up. Comfortable switching play and working wide triangles. Saints need to “stop at source” and stay compact on the sides.
+          </p>
+        </article>
+        <article class="news-card">
+          <div class="news-tag">Home record</div>
+          <h3>Vicarage Road</h3>
+          <p style="margin:8px 0;font-size:0.95rem;color:var(--grey-400)">
+            Last season Watford were clearly stronger at home than away. Opening day at Vicarage Road is rarely straightforward for visitors.
+          </p>
+        </article>
+        <article class="news-card">
+          <div class="news-tag">Key notes</div>
+          <h3>For Saints fans</h3>
+          <ul style="margin:8px 0 0;padding-left:1.1rem;line-height:1.7;font-size:0.95rem;color:var(--grey-400)">
+            <li>New coach still embedding ideas</li>
+            <li>Not in free-scoring form lately</li>
+            <li>Danger on the break and in wide areas</li>
+            <li>Sold-out Saints away end</li>
+          </ul>
+        </article>
+      </div>
+      <p style="margin-top:14px;text-align:center;font-size:0.8rem;color:var(--grey-500)">Unofficial opponent notes for matchday.</p>
+    </div>
+  </section>
+
+
+
+  <section class="section" id="latest-official">
+    <div class="container">
+      <div class="section-header">
+        <h2>Latest from the club</h2>
+        <p>Official Southampton FC · 14–15 Aug 2026</p>
+      </div>
+      <div style="max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:12px">
+        <article class="news-card">
+          <div class="news-tag">Team news</div>
+          <h3>Jander Saints’ only doubt for Watford</h3>
+          <p style="margin:8px 0;font-size:0.95rem;color:var(--grey-400)">Eckert: Caspar Jander could feature; he is the only fitness concern. Rest of the squad looking good and strong.</p>
+          <span class="news-date">southamptonfc.com</span>
+        </article>
+        <article class="news-card">
+          <div class="news-tag">Attack</div>
+          <h3>Eckert excited by Saints’ attacking talent</h3>
+          <p style="margin:8px 0;font-size:0.95rem;color:var(--grey-400)">Head coach positive about forward options ahead of the Championship opener.</p>
+          <span class="news-date">14 Aug 2026</span>
+        </article>
+        <article class="news-card">
+          <div class="news-tag">Academy</div>
+          <h3>Three young players sign pro deals</h3>
+          <p style="margin:8px 0;font-size:0.95rem;color:var(--grey-400)">Walter Nutter, Luke Hawe and Calum Anderson have signed professional contracts.</p>
+          <span class="news-date">14 Aug 2026</span>
+        </article>
+        <article class="news-card">
+          <div class="news-tag">Fixtures</div>
+          <h3>Next up after Watford</h3>
+          <p style="margin:8px 0;font-size:0.95rem;color:var(--grey-400)">Sat 22 Aug — Stoke City (H) · Tue 25 Aug — West Ham United (H) Carabao Cup R2</p>
+          <span class="news-date">Championship + Cup</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Eckert Press Conference -->
+  <section class="section" id="eckert-pc">
+    <div class="container">
+      <div class="section-header">
+        <h2>Head Coach Press Conference</h2>
+        <p>Tonda Eckert · Ahead of Watford (A) · 13 Aug 2026</p>
+      </div>
+      <article class="news-card" style="max-width:600px;margin:0 auto 14px">
+        <div class="news-tag">Pre-match</div>
+        <h3>Main points</h3>
+        <ul style="margin:12px 0 0;padding-left:1.1rem;line-height:1.75;font-size:0.95rem">
+          <li><strong>Ready for the season</strong> — Cup game important; full week of prep; training sharp.</li>
+          <li><strong>Mubama</strong> — Clear No.9, ambitious, can finish with both feet; eager to learn; good first impressions.</li>
+          <li><strong>Larin + Mubama</strong> — Can be a strong combination; Larin helps younger strikers rather than seeing them as rivals.</li>
+          <li><strong>Charles replacement</strong> — Yes, Saints are in the market for a midfield replacement.</li>
+          <li><strong>Squad size</strong> — Prefers smaller squad; expects few more signings, only if “spot on”; academy players knocking.</li>
+          <li><strong>Injuries</strong> — Caspar Jander the main doubt (late call); rest of squad looks strong after a clean pre-season.</li>
+          <li><strong>Harwood-Bellis links</strong> — Unfazed; interest in performers is normal; group focused.</li>
+          <li><strong>Watford</strong> — Knows new manager from Italy; strong in transitions and wide triangles; expect a tough game.</li>
+          <li><strong>Minus-four / last season</strong> — Group closer; strong start important; focus is only Watford once on the grass.</li>
+          <li><strong>FA process</strong> — Ongoing; timeline with the FA; not a big personal distraction this week.</li>
+          <li><strong>Message to fans</strong> — Grateful for summer support; will work to make them proud.</li>
+        </ul>
+      </article>
+      <div style="max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+        <a href="https://www.youtube.com/watch?v=BVuY9qcEbt8" target="_blank" rel="noopener" class="news-card" style="text-decoration:none;display:block;padding:14px 16px">
+          <div class="news-tag">Video</div>
+          <h3 style="margin:6px 0;font-size:1.05rem">Press Conference Live: Eckert previews Watford</h3>
+          <p style="margin:0;font-size:0.9rem;color:var(--grey-400)">Official Southampton FC · YouTube</p>
+        </a>
+        <a href="https://www.dailyecho.co.uk/sport/26460876.every-word-southampton-fc-boss-eckert-said-watford-trip/" target="_blank" rel="noopener" class="news-card" style="text-decoration:none;display:block;padding:14px 16px">
+          <div class="news-tag">Transcript</div>
+          <h3 style="margin:6px 0;font-size:1.05rem">Every word Eckert said — Daily Echo</h3>
+          <p style="margin:0;font-size:0.9rem;color:var(--grey-400)">Full Q&amp;A write-up</p>
+        </a>
+        <a href="https://www.southamptonfc.com/en/video/press-conference-part-two-eckert-on-watford-clash" target="_blank" rel="noopener" class="news-card" style="text-decoration:none;display:block;padding:14px 16px">
+          <div class="news-tag">Club</div>
+          <h3 style="margin:6px 0;font-size:1.05rem">Press Conference part two — club site</h3>
+          <p style="margin:0;font-size:0.9rem;color:var(--grey-400)">Southampton FC official video</p>
+        </a>
+      </div>
+      <p style="margin-top:14px;text-align:center;font-size:0.8rem;color:var(--grey-500)">Unofficial summary for fans. Quotes paraphrased from published press coverage.</p>
+    </div>
+  </section>
+
+
+  <!-- On This Day -->
+
+  <!-- Watford Preview -->
+  
+
+  <!-- On This Day -->
+  <section class="section" id="on-this-day">
+    <div class="container">
+      <div class="section-header">
+        <h2>On This Day</h2>
+        <p>12 August · Saints history</p>
+      </div>
+      <article class="news-card" style="max-width:560px;margin:0 auto">
+        <div class="news-tag">This day in history</div>
+        <h3>12 August</h3>
+        <ul style="margin:12px 0 0;padding-left:1.1rem;line-height:1.75;font-size:0.95rem">
+          <li><strong>2025</strong> – Carabao Cup: Northampton Town 0–1 Southampton. Mateus Fernandes scored the only goal (48') on his first start of the season as Saints progressed.</li>
+          <li><strong>August tradition</strong> – Season openers and early cup ties often fall in mid-August. The 2026/27 Championship campaign starts in four days at Watford.</li>
+          <li><strong>Club roots</strong> – Founded 21 November 1885 as St. Mary’s Y.M.A. The nickname “The Saints” comes from those church beginnings.</li>
+          <li><strong>1976 legacy</strong> – Still the greatest day: Bobby Stokes’ winner vs Manchester United in the FA Cup Final (1 May) remains the benchmark for every new season.</li>
+        </ul>
+        <p style="margin-top:14px;font-size:0.85rem;color:var(--grey-500)">Unofficial fan timeline. Moments chosen for supporters.</p>
+      </article>
     </div>
   </section>
 
@@ -2854,7 +3043,7 @@ body.light-mode .ad-slot {
         <p>Upcoming matches • Championship & Cups</p>
       </div>
       <div class="fixtures-list">
-        <div class="fixture-card next">
+        <div class="fixture-card">
           <div class="fixture-date">
             <span class="day">Sat</span>
             <span class="date">08 Aug</span>
@@ -2869,7 +3058,7 @@ body.light-mode .ad-slot {
           </div>
           <a href="https://www.southamptonfc.com" target="_blank" rel="noopener" class="btn btn-sm">Match Centre</a>
         </div>
-        <div class="fixture-card">
+        <div class="fixture-card next">
           <div class="fixture-date">
             <span class="day">Sun</span>
             <span class="date">16 Aug</span>
@@ -2882,7 +3071,7 @@ body.light-mode .ad-slot {
               <span class="vs">vs</span>
               <span class="home">Southampton</span>
             </div>
-            <span class="venue">Away • 14:30</span>
+            <span class="venue">Away • 14:30 CET · Sky Sports</span>
           </div>
           <a href="https://www.southamptonfc.com" target="_blank" rel="noopener" class="btn btn-sm">Match Centre</a>
         </div>
@@ -2920,6 +3109,25 @@ body.light-mode .ad-slot {
           </div>
           <a href="https://www.southamptonfc.com" target="_blank" rel="noopener" class="btn btn-sm">Match Centre</a>
         </div>
+
+        <div class="fixture-card">
+          <div class="fixture-date">
+            <span class="day">Tue/Wed</span>
+            <span class="date">25–26</span>
+            <span class="year">Aug</span>
+          </div>
+          <div class="fixture-match">
+            <span class="competition">Carabao Cup R2</span>
+            <div class="teams">
+              <span class="home">Southampton</span>
+              <span class="vs">vs</span>
+              <span class="away">West Ham United</span>
+            </div>
+            <span class="venue">Home · St Mary’s · Date confirmed by club</span>
+          </div>
+          <a href="https://www.southamptonfc.com" target="_blank" rel="noopener" class="btn btn-sm">Match Centre</a>
+        </div>
+
       </div>
     </div>
   </section>
@@ -3019,9 +3227,18 @@ body.light-mode .ad-slot {
         <p>Men's Team updates</p>
       </div>
                                           <div class="news-grid">
+
+        <article class="news-card featured">
+          <div class="news-tag">Cup · New</div>
+          <h3>West Ham cup date confirmed</h3>
+          <p>Carabao Cup Round Two: Southampton will host West Ham United at St Mary’s. Exact kick-off confirmed by the club (second-round window late August).</p>
+          <p style="margin-top:8px;font-size:0.9rem"><a href="https://www.southamptonfc.com/en/news" target="_blank" rel="noopener" class="news-link">Official club news →</a></p>
+          <span class="news-date">12 Aug 2026</span>
+        </article>
+
         <article class="news-card featured">
           <div class="news-tag">Full Time • 8 Aug 2026</div>
-          <h3>Colchester United 0–2 W2 Southampton</h3>
+          <h3>Colchester United 0–2 Southampton</h3>
           <p><strong>Carabao Cup First Round</strong><br>
           Cyle Larin (72') • Romeo Akachukwu (90+2')<br>
           Saints win and progress to the next round.<br>
@@ -3099,69 +3316,72 @@ body.light-mode .ad-slot {
     <section class="section" id="transfers">
     <div class="container">
       <div class="section-header">
-        <h2>Transfer News</h2>
-        <p>Confirmed moves &amp; latest rumours • Summer 2026</p>
+        <h2>Transfer Board</h2>
+        <p>Summer window · Updated 14 Aug 2026</p>
       </div>
-      <div class="news-grid">
-        <article class="news-card featured">
-          <div class="news-tag">Confirmed • Out</div>
-          <h3>Shea Charles → Fulham (£30m)</h3>
-          <p>Move completed. Deal reported as £26m + £4m add-ons, five-year contract at Craven Cottage, significant sell-on clause for Saints.</p>
-          <p style="margin-top:10px;font-style:italic;line-height:1.5">“Thank you Saints for the last three years… And for the fans who supported us through the ups and downs, I am so grateful. All the best for the future Saints.”</p>
-          <p style="margin-top:8px;font-size:0.9rem"><a href="https://www.dailyecho.co.uk/sport/26453458.so-grateful---charles-pens-southampton-fc-farewell-message/" target="_blank" rel="noopener" class="news-link">Farewell message (Daily Echo) →</a><br>
-          <a href="https://www.youtube.com/watch?v=BU47DX6YBiQ" target="_blank" rel="noopener" class="news-link">Related video →</a></p>
-          <span class="news-date">11 Aug 2026 • 76 appearances for Saints</span>
+      <div style="max-width:580px;margin:0 auto;display:flex;flex-direction:column;gap:12px">
+
+        <article class="news-card">
+          <div class="news-tag">Out · Confirmed</div>
+          <h3>Shea Charles → Fulham</h3>
+          <p style="margin:8px 0;font-size:0.95rem;color:var(--grey-400)">Completed. Fee reported ~£30m. Farewell message to the fans posted.</p>
+          <span class="news-date">Confirmed</span>
         </article>
-        <article class="news-card featured">
-          <div class="news-tag">Confirmed • In</div>
-          <h3>Divin Mubama → Saints (loan)</h3>
-          <p>Season-long loan from Manchester City. 21-year-old striker scored 5 in 28 for Stoke last season; strong pre-season with City.</p>
-          <p style="margin-top:10px;font-style:italic;line-height:1.5">“It’s up to you whether you put the ball in the back of the net, and that’s what I’m here to do… I feel really fresh, I feel sharp, so I’m just really excited to get going.”</p>
-          <p style="margin-top:8px;font-size:0.9rem">
-            <a href="https://www.southamptonfc.com/en/news/article/saints-secure-mubama-loan-signing" target="_blank" rel="noopener" class="news-link">Official announcement →</a><br>
-            <a href="https://www.bbc.co.uk/sport/football/articles/cn7n88g37n7o" target="_blank" rel="noopener" class="news-link">BBC Sport →</a><br>
-            <a href="https://www.youtube.com/watch?v=BU47DX6YBiQ" target="_blank" rel="noopener" class="news-link">Related video →</a>
+
+        <article class="news-card">
+          <div class="news-tag">In · Confirmed</div>
+          <h3>Divin Mubama ← Man City (loan)</h3>
+          <p style="margin:8px 0;font-size:0.95rem;color:var(--grey-400)">Season-long loan. “I’m here to score goals.” Clear No.9 profile.</p>
+          <span class="news-date">Confirmed</span>
+        </article>
+
+        <article class="news-card">
+          <div class="news-tag">In · Confirmed</div>
+          <h3>Other permanent arrivals</h3>
+          <p style="margin:8px 0;font-size:0.95rem;color:var(--grey-400)">
+            Lewis Dobbin (Aston Villa, ~£9–10.5m) · Cyle Larin (Mallorca, permanent) · Daniel Peretz (Bayern, permanent) · George Long (Norwich, free) · Issa Tounkara
           </p>
-          <span class="news-date">11 Aug 2026 • Same day as Charles exit</span>
+          <span class="news-date">Confirmed</span>
         </article>
+
         <article class="news-card">
-          <div class="news-tag">Confirmed</div>
-          <h3>Jay Robinson → AC Monza (loan)</h3>
-          <p>Young winger completes season-long loan to Serie A side Monza. No option to buy reported.</p>
-          <span class="news-date">7 Aug 2026</span>
+          <div class="news-tag">Out · Confirmed</div>
+          <h3>Released / free exits</h3>
+          <p style="margin:8px 0;font-size:0.95rem;color:var(--grey-400)">
+            Ross Stewart (Swansea) · Alex McCarthy · Charlie Taylor · Oriol Romeu · Will Smallbone · Joe Aribo
+          </p>
+          <span class="news-date">Confirmed</span>
         </article>
+
         <article class="news-card">
-          <div class="news-tag">Confirmed</div>
-          <h3>Ross Stewart → Swansea (free)</h3>
-          <p>Striker leaves on a free transfer after the end of his contract.</p>
-          <span class="news-date">6 Aug 2026</span>
+          <div class="news-tag">Priority</div>
+          <h3>Charles midfield replacement</h3>
+          <p style="margin:8px 0;font-size:0.95rem;color:var(--grey-400)">
+            Eckert confirmed Saints are in the market for a central midfielder. Prefers a smaller squad and only “spot on” additions.
+          </p>
+          <span class="news-date">Active search</span>
         </article>
+
         <article class="news-card">
-          <div class="news-tag">In</div>
-          <h3>Lewis Dobbin (Aston Villa)</h3>
-          <p>Forward signed permanently. Eckert has spoken highly of his potential impact.</p>
-          <span class="news-date">15 Jul 2026</span>
+          <div class="news-tag">Rumours only</div>
+          <h3>Linked names (unconfirmed)</h3>
+          <p style="margin:8px 0;font-size:0.95rem;color:var(--grey-400)">
+            Louey Ben Farhat (Karlsruher) · Daniel Jebbison (Bournemouth) · Iván Azón (Como) · Justin Devenny · Alfie Devine (loan) · Jaydan Kamason
+          </p>
+          <span class="news-date">Treat as rumour until club confirms</span>
         </article>
+
         <article class="news-card">
-          <div class="news-tag">In</div>
-          <h3>Cyle Larin • Daniel Peretz • George Long</h3>
-          <p>Larin’s loan made permanent. Peretz signed from Bayern. Long arrived free from Norwich.</p>
-          <span class="news-date">Summer 2026</span>
+          <div class="news-tag">Outgoing noise</div>
+          <h3>Possible exits</h3>
+          <p style="margin:8px 0;font-size:0.95rem;color:var(--grey-400)">
+            Samuel Edozie linked with interest (e.g. Cardiff). Some fringe/U21 players already out on loan.
+          </p>
+          <span class="news-date">Unconfirmed</span>
         </article>
-        <article class="news-card">
-          <div class="news-tag">Rumour</div>
-          <h3>Louey Ben Farhat interest</h3>
-          <p>Saints among clubs linked with the Tunisian striker at Karlsruher SC.</p>
-          <span class="news-date">Early Aug 2026</span>
-        </article>
-        <article class="news-card">
-          <div class="news-tag">Out / Loans</div>
-          <h3>Academy &amp; fringe moves</h3>
-          <p>Dobson-Ventura (Eastleigh loan), Josh Jeffries (Eastleigh), Jayden Moore (Worthing loan), plus other releases and loans.</p>
-          <span class="news-date">Jul–Aug 2026</span>
-        </article>
+
       </div>
-      <p style="margin-top:14px;text-align:center;font-size:0.85rem;color:var(--grey-500)">Rumours can change quickly. Always check official club channels for confirmation.</p>
+      <p style="margin-top:14px;text-align:center;font-size:0.8rem;color:var(--grey-500)">Unofficial board. Always check official club announcements.</p>
     </div>
   </section>
 
@@ -3179,7 +3399,7 @@ body.light-mode .ad-slot {
           <tbody>
             <tr><td>1 Aug</td><td>SC Preußen Münster (A)</td><td>Friendly</td><td class="win">1–2 W</td></tr>
             <tr><td>8 Aug</td><td>Colchester United (A)</td><td>Carabao Cup</td><td class="win">0–2 W</td></tr>
-            <tr><td>16 Aug</td><td>Watford (A)</td><td>Championship</td><td>—</td></tr>
+            <tr><td>16 Aug</td><td>Watford (A)</td><td>Championship</td><td>L 1–2</td></tr>
             <tr><td>22 Aug</td><td>Stoke City (H)</td><td>Championship</td><td>—</td></tr>
           </tbody>
         </table>
@@ -3427,37 +3647,45 @@ body.light-mode .ad-slot {
   </section>
 
   <!-- MotM Poll -->
+  <!-- MotM Poll Watford-ready -->
   <section class="section" id="motm-poll">
     <div class="container">
       <div class="section-header">
         <h2>Man of the Match</h2>
-        <p>Colchester United 0–2 Southampton • Your vote</p>
+        <p>Watford vs Southampton · Vote after full time</p>
       </div>
       <div class="poll-box" style="max-width:420px;margin:0 auto;text-align:center">
-        <p style="margin-bottom:14px;color:var(--grey-400);font-size:0.95rem">Who was your MotM at Colchester?</p>
+        <p style="margin-bottom:14px;color:var(--grey-400);font-size:0.95rem">Who was your MotM at Vicarage Road?</p>
         <div class="poll-options" id="motmOptions" style="display:flex;flex-direction:column;gap:10px">
-          <button type="button" class="poll-btn" data-choice="Cyle Larin">Cyle Larin (goal)</button>
-          <button type="button" class="poll-btn" data-choice="Romeo Akachukwu">Romeo Akachukwu (goal)</button>
-          <button type="button" class="poll-btn" data-choice="Ryan Manning">Ryan Manning (assist)</button>
+          <button type="button" class="poll-btn" data-choice="Cyle Larin">Cyle Larin</button>
+          <button type="button" class="poll-btn" data-choice="Divin Mubama">Divin Mubama</button>
+          <button type="button" class="poll-btn" data-choice="Ryan Manning">Ryan Manning</button>
           <button type="button" class="poll-btn" data-choice="Daniel Peretz">Daniel Peretz</button>
           <button type="button" class="poll-btn" data-choice="Other">Other</button>
         </div>
         <p id="motmChoice" style="margin-top:14px;font-weight:600;min-height:1.4em"></p>
-        <p id="motmNote" style="font-size:0.85rem;color:var(--grey-400)"></p>
+        <p id="motmNote" style="font-size:0.85rem;color:var(--grey-400)">Poll ready — vote after the final whistle. (Local only.)</p>
       </div>
     </div>
   </section>
 
   <!-- Injury Board -->
+  <!-- Injury Board -->
   <section class="section" id="injury-board">
     <div class="container">
       <div class="section-header">
-        <h2>Injury & Availability</h2>
-        <p>Reported status • Update regularly</p>
+        <h2>Injury &amp; Availability</h2>
+        <p>Official update ahead of Watford · 15 Aug 2026</p>
       </div>
       <div style="max-width:520px;margin:0 auto">
         <div style="margin-bottom:14px">
-          <h3 style="font-size:0.9rem;color:#f87171;margin-bottom:8px">Out / Unavailable</h3>
+          <h3 style="font-size:0.9rem;color:#fbbf24;margin-bottom:8px">Doubt</h3>
+          <ul style="list-style:none;padding:0;margin:0;line-height:1.7;font-size:0.95rem">
+            <li>• <strong>Caspar Jander</strong> — only fitness concern; could feature (late call)</li>
+          </ul>
+        </div>
+        <div style="margin-bottom:14px">
+          <h3 style="font-size:0.9rem;color:#f87171;margin-bottom:8px">Still listed out in wider reports</h3>
           <ul style="list-style:none;padding:0;margin:0;line-height:1.7;font-size:0.95rem">
             <li>• Taylor Harwood-Bellis — ankle</li>
             <li>• Jan Bednarek — knee</li>
@@ -3467,14 +3695,13 @@ body.light-mode .ad-slot {
           </ul>
         </div>
         <div>
-          <h3 style="font-size:0.9rem;color:#4ade80;margin-bottom:8px">Available / Used</h3>
+          <h3 style="font-size:0.9rem;color:#4ade80;margin-bottom:8px">In contention</h3>
           <ul style="list-style:none;padding:0;margin:0;line-height:1.7;font-size:0.95rem">
-            <li>• Cyle Larin — scored off the bench at Colchester</li>
-            <li>• Romeo Akachukwu — scored late at Colchester</li>
-            <li>• Squad depth shown in cup win</li>
+            <li>• Cyle Larin · Divin Mubama · Daniel Peretz</li>
+            <li>• Rest of squad “looking good and strong” (Eckert)</li>
           </ul>
         </div>
-        <p style="margin-top:14px;font-size:0.8rem;color:var(--grey-500);text-align:center">Always check official club channels for confirmed status.</p>
+        <p style="margin-top:14px;font-size:0.8rem;color:var(--grey-500);text-align:center">Source: Southampton FC — Jander only doubt for opener. Verify team news on the day.</p>
       </div>
     </div>
   </section>
@@ -3629,6 +3856,69 @@ body.light-mode .ad-slot {
       </div>
     </div>
   </section>
+
+  <!-- Classic Saints Videos -->
+  <section class="section" id="classic-videos">
+    <div class="container">
+      <div class="section-header">
+        <h2>Classic Saints Videos</h2>
+        <p>Van Dijk era &amp; legendary goals</p>
+      </div>
+      <div style="max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:12px">
+        <a href="https://www.youtube.com/watch?v=E2R5-_nZN4w" target="_blank" rel="noopener" class="news-card" style="text-decoration:none;display:block;padding:14px 16px">
+          <div class="news-tag">Virgil van Dijk</div>
+          <h3 style="margin:6px 0;font-size:1.05rem">Goals, Skills &amp; Assists • Southampton 2016/17</h3>
+          <p style="margin:0;font-size:0.9rem;color:var(--grey-400)">Best package of VVD in a Saints shirt</p>
+        </a>
+        <a href="https://www.youtube.com/watch?v=WddgnZsWp9A" target="_blank" rel="noopener" class="news-card" style="text-decoration:none;display:block;padding:14px 16px">
+          <div class="news-tag">Virgil van Dijk</div>
+          <h3 style="margin:6px 0;font-size:1.05rem">His only FA Cup goal for Southampton</h3>
+          <p style="margin:0;font-size:0.9rem;color:var(--grey-400)">Volley vs Norwich • Official FA Cup clip</p>
+        </a>
+        <a href="https://www.youtube.com/watch?v=vogJ4XSJwQQ" target="_blank" rel="noopener" class="news-card" style="text-decoration:none;display:block;padding:14px 16px">
+          <div class="news-tag">Gareth Bale</div>
+          <h3 style="margin:6px 0;font-size:1.05rem">Every Southampton goal</h3>
+          <p style="margin:0;font-size:0.9rem;color:var(--grey-400)">Official Saints channel</p>
+        </a>
+        <a href="https://www.youtube.com/watch?v=w8_dVekpn70" target="_blank" rel="noopener" class="news-card" style="text-decoration:none;display:block;padding:14px 16px">
+          <div class="news-tag">Matt Le Tissier</div>
+          <h3 style="margin:6px 0;font-size:1.05rem">Top 10 goals – ridiculous</h3>
+          <p style="margin:0;font-size:0.9rem;color:var(--grey-400)">Official Saints channel</p>
+        </a>
+        <a href="https://www.youtube.com/watch?v=h6Pg2L-KvxM" target="_blank" rel="noopener" class="news-card" style="text-decoration:none;display:block;padding:14px 16px">
+          <div class="news-tag">Squad Goals</div>
+          <h3 style="margin:6px 0;font-size:1.05rem">Superb Southampton goals</h3>
+          <p style="margin:0;font-size:0.9rem;color:var(--grey-400)">Le Tissier, Ward-Prowse, Beattie &amp; more • Premier League</p>
+        </a>
+        <a href="https://www.youtube.com/watch?v=TLy_L08HL-w" target="_blank" rel="noopener" class="news-card" style="text-decoration:none;display:block;padding:14px 16px">
+          <div class="news-tag">2010–2019</div>
+          <h3 style="margin:6px 0;font-size:1.05rem">100 Goals of the Decade</h3>
+          <p style="margin:0;font-size:0.9rem;color:var(--grey-400)">Official long-form countdown</p>
+        </a>
+      </div>
+      <p style="margin-top:16px;text-align:center;font-size:0.85rem;color:var(--grey-500)">Links open on YouTube. Classic moments for Saints fans.</p>
+    </div>
+  </section>
+
+  <!-- How to follow Watford -->
+  <section class="section" id="follow-watford">
+    <div class="container">
+      <div class="section-header">
+        <h2>How to follow Watford</h2>
+        <p>Championship opener · Sun 16 Aug · 14:30 CET</p>
+      </div>
+      <article class="news-card" style="max-width:520px;margin:0 auto">
+        <ul style="list-style:none;padding:0;margin:0;line-height:1.8;font-size:0.95rem">
+          <li><strong>TV:</strong> Sky Sports Main Event · Sky Sports Football</li>
+          <li><strong>Kick-off:</strong> 13:30 UK / 14:30 CET</li>
+          <li><strong>Venue:</strong> Vicarage Road (away)</li>
+          <li><strong>Audio:</strong> Club audio pass / BBC Radio Solent (check listings)</li>
+          <li><strong>Fan Zone:</strong> Northam Fan Zone screening at St Mary’s (club)</li>
+        </ul>
+        <p style="margin-top:12px;font-size:0.85rem;color:var(--grey-500)">Away end sold out. Always confirm times on official club / broadcaster channels.</p>
+      </article>
+    </div>
+  </section>
   <!-- Support This Site -->
   
   <!-- Ad Slot: Bottom -->
@@ -3713,7 +4003,7 @@ body.light-mode .ad-slot {
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <p>© 2026 Unofficial Fan Site • Play Up Saints • Last updated: 11 Aug 2026 – Transfer video link added</p>
+        <p>© 2026 Unofficial Fan Site • Play Up Saints • Last updated: 16 Aug 2026 – FT Watford 2–1 Southampton</p>
       </div>
     </div>
   </footer>
@@ -3773,35 +4063,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // Match Countdown - Colchester United 8 Aug 2026 17:30 UK
-  const nextMatch = new Date('2026-08-08T16:30:00Z'); // 17:30 BST = 16:30 UTC
-  function updateCountdown() {
-    const now = new Date();
-    let diff = nextMatch.getTime() - now.getTime();
-    const timerEl = document.getElementById('countdownTimer');
-    if (!timerEl) return;
-    if (diff <= 0) {
-      timerEl.innerHTML = '<span style="font-size:1.1rem;color:var(--red)">FT 0–2 / Live</span>';
-      return;
-    }
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    diff -= days * (1000 * 60 * 60 * 24);
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    diff -= hours * (1000 * 60 * 60);
-    const mins = Math.floor(diff / (1000 * 60));
-    diff -= mins * (1000 * 60);
-    const secs = Math.floor(diff / 1000);
-    const set = (id, val) => {
-      const el = document.getElementById(id);
-      if (el) el.textContent = String(val).padStart(2, '0');
-    };
-    set('cd-days', days);
-    set('cd-hours', hours);
-    set('cd-mins', mins);
-    set('cd-secs', secs);
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+  // countdown handled by single script below
 
   // Share buttons
   const pageUrl = encodeURIComponent(window.location.href);
@@ -3972,49 +4234,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 <script>
-// Independent countdown - Colchester United 8 Aug 2026 17:30 UK (16:30 UTC)
-(function() {
-  var target = new Date(Date.UTC(2026, 7, 8, 16, 30, 0)); // Month is 0-indexed: 7 = August
-
-  function pad(n) {
-    return n < 10 ? '0' + n : '' + n;
-  }
-
-  function tick() {
-    var now = new Date();
-    var diff = target.getTime() - now.getTime();
-
-    var daysEl = document.getElementById('cd-days');
-    var hoursEl = document.getElementById('cd-hours');
-    var minsEl = document.getElementById('cd-mins');
-    var secsEl = document.getElementById('cd-secs');
-    var timerEl = document.getElementById('countdownTimer');
-
-    if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
-
-    if (diff <= 0) {
-      if (timerEl) {
-        timerEl.innerHTML = '<span style="font-size:1.15rem;color:#D71920;font-weight:700;">FT 0–2</span>';
-      }
-      return;
-    }
-
-    var days = Math.floor(diff / 86400000);
-    diff -= days * 86400000;
-    var hours = Math.floor(diff / 3600000);
-    diff -= hours * 3600000;
-    var mins = Math.floor(diff / 60000);
-    diff -= mins * 60000;
-    var secs = Math.floor(diff / 1000);
-
-    daysEl.textContent = pad(days);
-    hoursEl.textContent = pad(hours);
-    minsEl.textContent = pad(mins);
-    secsEl.textContent = pad(secs);
-  }
-
-  tick();
-  setInterval(tick, 1000);
+// countdown handled by single script below
 })();
 </script>
 
@@ -4054,6 +4274,34 @@ document.addEventListener('DOMContentLoaded', () => {
       if (noteEl) noteEl.textContent = 'Thanks for voting. (Local only — not stored on a server.)';
     });
   });
+})();
+</script>
+
+
+
+
+
+
+
+
+<script>
+(function(){
+  var target = Date.UTC(2026, 7, 16, 12, 30, 0);
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function tick(){
+    var a = document.getElementById('cd-days');
+    var b = document.getElementById('cd-hours');
+    var c = document.getElementById('cd-mins');
+    var d = document.getElementById('cd-secs');
+    if (!a || !b || !c || !d) return;
+    var diff = Math.max(0, target - Date.now());
+    a.textContent = pad(Math.floor(diff / 86400000));
+    b.textContent = pad(Math.floor((diff % 86400000) / 3600000));
+    c.textContent = pad(Math.floor((diff % 3600000) / 60000));
+    d.textContent = pad(Math.floor((diff % 60000) / 1000));
+  }
+  tick();
+  setInterval(tick, 1000);
 })();
 </script>
 
