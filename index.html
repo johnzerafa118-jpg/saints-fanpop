@@ -2381,7 +2381,25 @@ body.light-mode .ad-slot {
   color: var(--white);
 }
 
-  </style>
+  
+.vote-count {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(215,25,32,0.2);
+  color: #fca5a5;
+  font-size: 0.8rem;
+  font-weight: 700;
+  min-width: 1.5em;
+  text-align: center;
+}
+.poll-option.selected .vote-count {
+  background: rgba(215,25,32,0.45);
+  color: #fff;
+}
+
+</style>
 
   <!-- Google AdSense - Replace ca-pub-XXXXXXXXXXXXXXXX with your real Publisher ID -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
@@ -2785,31 +2803,33 @@ body.light-mode .ad-slot {
     <div class="container">
       <div class="section-header">
         <h2>Fan Polls</h2>
-        <p>Your vote · stored on this device only</p>
+        <p>Votes counted live · one vote per device</p>
       </div>
 
       <div class="poll-box" id="motm-poll" style="margin-bottom:20px">
         <h3>Man of the Match — Watford (A)</h3>
         <div class="poll-options" id="motm-options">
-          <button type="button" class="poll-option" data-poll="motm" data-val="Larin">Cyle Larin</button>
-          <button type="button" class="poll-option" data-poll="motm" data-val="Bragg">Bragg</button>
-          <button type="button" class="poll-option" data-poll="motm" data-val="Peretz">Peretz</button>
-          <button type="button" class="poll-option" data-poll="motm" data-val="Harwood-Bellis">Harwood-Bellis</button>
-          <button type="button" class="poll-option" data-poll="motm" data-val="Other">Other / no one stood out</button>
+          <button type="button" class="poll-option" data-poll="motm" data-val="Larin">Cyle Larin <span class="vote-count" data-count="motm-Larin">0</span></button>
+          <button type="button" class="poll-option" data-poll="motm" data-val="Bragg">Bragg <span class="vote-count" data-count="motm-Bragg">0</span></button>
+          <button type="button" class="poll-option" data-poll="motm" data-val="Peretz">Peretz <span class="vote-count" data-count="motm-Peretz">0</span></button>
+          <button type="button" class="poll-option" data-poll="motm" data-val="Harwood-Bellis">Harwood-Bellis <span class="vote-count" data-count="motm-Harwood-Bellis">0</span></button>
+          <button type="button" class="poll-option" data-poll="motm" data-val="Other">Other / no one stood out <span class="vote-count" data-count="motm-Other">0</span></button>
         </div>
-        <p class="poll-note" id="motm-note">Tap once to vote. You can change your mind later on this device.</p>
-        <div class="poll-thanks" id="motm-thanks" style="display:none">Thanks — vote saved on this device.</div>
+        <p class="poll-note" id="motm-note">Tap once to vote. Totals update for everyone.</p>
+        <div class="poll-thanks" id="motm-thanks" style="display:none">Thanks — your vote is counted.</div>
+        <p style="margin-top:10px;font-size:0.8rem;color:var(--grey-500)">Total votes: <strong id="motm-total">0</strong></p>
       </div>
 
       <div class="poll-box" id="pred-poll">
         <h3>Prediction — Southampton vs Stoke</h3>
         <div class="poll-options" id="pred-options">
-          <button type="button" class="poll-option" data-poll="pred" data-val="H">Home win</button>
-          <button type="button" class="poll-option" data-poll="pred" data-val="D">Draw</button>
-          <button type="button" class="poll-option" data-poll="pred" data-val="A">Stoke win</button>
+          <button type="button" class="poll-option" data-poll="pred" data-val="H">Home win <span class="vote-count" data-count="pred-H">0</span></button>
+          <button type="button" class="poll-option" data-poll="pred" data-val="D">Draw <span class="vote-count" data-count="pred-D">0</span></button>
+          <button type="button" class="poll-option" data-poll="pred" data-val="A">Stoke win <span class="vote-count" data-count="pred-A">0</span></button>
         </div>
         <p class="poll-note" id="pred-note">Lock in before kick-off.</p>
-        <div class="poll-thanks" id="pred-thanks" style="display:none">Prediction saved on this device.</div>
+        <div class="poll-thanks" id="pred-thanks" style="display:none">Prediction counted.</div>
+        <p style="margin-top:10px;font-size:0.8rem;color:var(--grey-500)">Total votes: <strong id="pred-total">0</strong></p>
       </div>
     </div>
   </section>
@@ -3988,7 +4008,7 @@ body.light-mode .ad-slot {
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <p>© 2026 Unofficial Fan Site • Play Up Saints • Last updated: 17 Aug 2026 – Next match countdown, polls, 5 things before Stoke</p>
+        <p>© 2026 Unofficial Fan Site • Play Up Saints • Last updated: 17 Aug 2026 – Live vote counts on polls</p>
       </div>
     </div>
   </footer>
@@ -4302,26 +4322,71 @@ document.addEventListener('DOMContentLoaded', () => {
     var hours = Math.floor((d % 86400000) / 3600000);
     var mins = Math.floor((d % 3600000) / 60000);
     var secs = Math.floor((d % 60000) / 1000);
-    var el = function(id,v){ var n=document.getElementById(id); if(n) n.textContent = v; };
+    function el(id,v){ var n=document.getElementById(id); if(n) n.textContent = v; }
     el('cd-days', days); el('cd-hours', hours); el('cd-mins', mins); el('cd-secs', secs);
   }
   tick(); setInterval(tick, 1000);
 
-  // Simple local polls
-  function setupPoll(pollKey, thanksId, noteId){
-    var saved = localStorage.getItem('saints_'+pollKey);
+  // Live vote counts via free CountAPI (no account)
+  var NS = 'saintsfanpop-2026';
+  var motmKeys = ['Larin','Bragg','Peretz','Harwood-Bellis','Other'];
+  var predKeys = ['H','D','A'];
+
+  function getCount(key, cb){
+    fetch('https://api.countapi.xyz/get/'+NS+'/'+key)
+      .then(function(r){ return r.json(); })
+      .then(function(d){ cb(d && typeof d.value==='number' ? d.value : 0); })
+      .catch(function(){ cb(0); });
+  }
+  function hitCount(key, cb){
+    fetch('https://api.countapi.xyz/hit/'+NS+'/'+key)
+      .then(function(r){ return r.json(); })
+      .then(function(d){ cb(d && typeof d.value==='number' ? d.value : 0); })
+      .catch(function(){ cb(0); });
+  }
+  function setLabel(key, val){
+    var nodes = document.querySelectorAll('[data-count="'+key+'"]');
+    nodes.forEach(function(n){ n.textContent = val; });
+  }
+  function refreshTotals(prefix, keys, totalId){
+    var left = keys.length, sum = 0, vals = {};
+    keys.forEach(function(k){
+      getCount(prefix+'-'+k, function(v){
+        vals[k] = v; sum += v; setLabel(prefix+'-'+k, v);
+        left--;
+        if(left===0){
+          var t = document.getElementById(totalId);
+          if(t) t.textContent = sum;
+        }
+      });
+    });
+  }
+
+  function setupPoll(pollKey, keys, thanksId, noteId, totalId){
+    var storageKey = 'saints_voted_'+pollKey;
+    var saved = localStorage.getItem(storageKey);
     var opts = document.querySelectorAll('[data-poll="'+pollKey+'"]');
     opts.forEach(function(btn){
-      if(saved && btn.getAttribute('data-val')===saved){ btn.classList.add('selected'); }
+      var val = btn.getAttribute('data-val');
+      if(saved && saved===val) btn.classList.add('selected');
       btn.addEventListener('click', function(){
-        var val = btn.getAttribute('data-val');
-        localStorage.setItem('saints_'+pollKey, val);
+        if(localStorage.getItem(storageKey)){
+          // already voted on this device — only highlight, don't double-count
+          opts.forEach(function(b){ b.classList.remove('selected'); });
+          btn.classList.add('selected');
+          return;
+        }
+        localStorage.setItem(storageKey, val);
         opts.forEach(function(b){ b.classList.remove('selected'); });
         btn.classList.add('selected');
+        hitCount(pollKey+'-'+val, function(v){
+          setLabel(pollKey+'-'+val, v);
+          refreshTotals(pollKey, keys, totalId);
+        });
         var t = document.getElementById(thanksId);
         var n = document.getElementById(noteId);
-        if(t){ t.style.display='block'; }
-        if(n){ n.style.display='none'; }
+        if(t) t.style.display='block';
+        if(n) n.style.display='none';
       });
     });
     if(saved){
@@ -4330,9 +4395,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if(t) t.style.display='block';
       if(n) n.style.display='none';
     }
+    refreshTotals(pollKey, keys, totalId);
   }
-  setupPoll('motm', 'motm-thanks', 'motm-note');
-  setupPoll('pred', 'pred-thanks', 'pred-note');
+
+  setupPoll('motm', motmKeys, 'motm-thanks', 'motm-note', 'motm-total');
+  setupPoll('pred', predKeys, 'pred-thanks', 'pred-note', 'pred-total');
 })();
 </script>
 
