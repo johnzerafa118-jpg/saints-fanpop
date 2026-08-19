@@ -2895,7 +2895,7 @@ body.light-mode .ad-slot {
     <div class="container">
       <div class="section-header">
         <h2>Fan Polls</h2>
-        <p>Live results with % · one vote per device</p>
+        <p>Results with % · updates when you vote (this device)</p>
       </div>
 
       <div class="poll-box" id="motm-poll" style="margin-bottom:20px">
@@ -4158,7 +4158,7 @@ body.light-mode .ad-slot {
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <p>© 2026 Unofficial Fan Site • Play Up Saints • Last updated: 19 Aug 2026 – Polls with % bars</p>
+        <p>© 2026 Unofficial Fan Site • Play Up Saints • Last updated: 19 Aug 2026 – Poll % fixed (local count)</p>
       </div>
     </div>
   </footer>
@@ -4452,38 +4452,32 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   tick(); setInterval(tick, 1000);
 
-  var NS = 'saintsfanpop-v2';
+  // Local-first vote counts (works offline; same device sees totals)
+  // Optional online boost via countapi when available
+  var NS = 'saintsfanpop-v3';
   var motmKeys = ['Larin','Bragg','Peretz','Harwood-Bellis','Other'];
   var predKeys = ['H','D','A'];
 
-  function apiGet(key){
-    return fetch('https://api.countapi.xyz/get/'+NS+'/'+key, {mode:'cors'})
-      .then(function(r){ return r.json(); })
-      .then(function(d){ return (d && typeof d.value==='number') ? d.value : 0; })
-      .catch(function(){ return null; });
+  function Lget(key){
+    try { return parseInt(localStorage.getItem('pollcnt_'+key)||'0',10)||0; } catch(e){ return 0; }
   }
-  function apiHit(key){
-    return fetch('https://api.countapi.xyz/hit/'+NS+'/'+key, {mode:'cors'})
-      .then(function(r){ return r.json(); })
-      .then(function(d){ return (d && typeof d.value==='number') ? d.value : 0; })
-      .catch(function(){ return null; });
+  function Lset(key,v){
+    try { localStorage.setItem('pollcnt_'+key, String(v)); } catch(e){}
   }
-
-  // Local fallback store (shared only on this device if API fails)
-  function localGet(key){
-    try { return parseInt(localStorage.getItem('cnt_'+key)||'0',10)||0; } catch(e){ return 0; }
-  }
-  function localHit(key){
-    var v = localGet(key)+1;
-    try { localStorage.setItem('cnt_'+key, String(v)); } catch(e){}
+  function Lhit(key){
+    var v = Lget(key)+1;
+    Lset(key, v);
     return v;
   }
 
-  function render(prefix, keys, totalId, counts){
-    var sum = 0;
-    keys.forEach(function(k){ sum += (counts[k]||0); });
+  function render(prefix, keys, totalId){
+    var sum = 0, counts = {};
     keys.forEach(function(k){
-      var v = counts[k]||0;
+      counts[k] = Lget(prefix+'-'+k);
+      sum += counts[k];
+    });
+    keys.forEach(function(k){
+      var v = counts[k];
       var pct = sum > 0 ? Math.round((v/sum)*100) : 0;
       var bar = document.querySelector('[data-bar="'+prefix+'-'+k+'"]');
       var lab = document.querySelector('[data-pct="'+prefix+'-'+k+'"]');
@@ -4494,52 +4488,65 @@ document.addEventListener('DOMContentLoaded', () => {
     if(t) t.textContent = sum;
   }
 
-  function refresh(prefix, keys, totalId){
-    var counts = {}, left = keys.length, useLocal = false;
+  // Try pull from countapi and merge into local (best-effort)
+  function pullOnline(prefix, keys, totalId){
     keys.forEach(function(k){
-      apiGet(prefix+'-'+k).then(function(v){
-        if(v === null){ useLocal = true; v = localGet(prefix+'-'+k); }
-        counts[k] = v;
-        left--;
-        if(left===0) render(prefix, keys, totalId, counts);
-      });
+      var key = prefix+'-'+k;
+      fetch('https://api.countapi.xyz/get/'+NS+'/'+key, {mode:'cors'})
+        .then(function(r){ return r.json(); })
+        .then(function(d){
+          if(d && typeof d.value==='number' && d.value > Lget(key)){
+            Lset(key, d.value);
+            render(prefix, keys, totalId);
+          }
+        }).catch(function(){});
     });
   }
 
   function setup(pollKey, keys, thanksId, noteId, totalId){
-    var storageKey = 'saints_voted_'+pollKey;
-    var saved = localStorage.getItem(storageKey);
+    var votedKey = 'saints_voted_'+pollKey;
+    var saved = null;
+    try { saved = localStorage.getItem(votedKey); } catch(e){}
     var opts = document.querySelectorAll('[data-poll="'+pollKey+'"]');
+
     opts.forEach(function(btn){
       var val = btn.getAttribute('data-val');
       if(saved && saved===val) btn.classList.add('selected');
       btn.addEventListener('click', function(){
-        if(localStorage.getItem(storageKey)){
+        var already = null;
+        try { already = localStorage.getItem(votedKey); } catch(e){}
+        if(already){
           opts.forEach(function(b){ b.classList.remove('selected'); });
           btn.classList.add('selected');
           return;
         }
-        localStorage.setItem(storageKey, val);
+        try { localStorage.setItem(votedKey, val); } catch(e){}
         opts.forEach(function(b){ b.classList.remove('selected'); });
         btn.classList.add('selected');
-        var key = pollKey+'-'+val;
-        apiHit(key).then(function(v){
-          if(v === null) localHit(key);
-          refresh(pollKey, keys, totalId);
-        });
+
+        // Count locally immediately so UI always updates
+        Lhit(pollKey+'-'+val);
+        render(pollKey, keys, totalId);
+
+        // Best-effort online increment
+        fetch('https://api.countapi.xyz/hit/'+NS+'/'+pollKey+'-'+val, {mode:'cors'}).catch(function(){});
+
         var th = document.getElementById(thanksId);
         var n = document.getElementById(noteId);
         if(th) th.style.display='block';
         if(n) n.style.display='none';
       });
     });
+
     if(saved){
       var th = document.getElementById(thanksId);
       var n = document.getElementById(noteId);
       if(th) th.style.display='block';
       if(n) n.style.display='none';
     }
-    refresh(pollKey, keys, totalId);
+
+    render(pollKey, keys, totalId);
+    pullOnline(pollKey, keys, totalId);
   }
 
   setup('motm', motmKeys, 'motm-thanks', 'motm-note', 'motm-total');
