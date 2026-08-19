@@ -2399,6 +2399,43 @@ body.light-mode .ad-slot {
   color: #fff;
 }
 
+
+.poll-option {
+  position: relative;
+  overflow: hidden;
+  text-align: left !important;
+  padding-left: 14px !important;
+  padding-right: 56px !important;
+}
+.poll-option .poll-bar {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  background: rgba(215, 25, 32, 0.35);
+  z-index: 0;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+.poll-option .poll-label {
+  position: relative;
+  z-index: 1;
+}
+.poll-option .poll-pct {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #fca5a5;
+}
+.poll-option.selected .poll-bar {
+  background: rgba(215, 25, 32, 0.55);
+}
+.poll-option.selected .poll-pct {
+  color: #fff;
+}
+
 </style>
 
   <!-- Google AdSense - Replace ca-pub-XXXXXXXXXXXXXXXX with your real Publisher ID -->
@@ -2858,19 +2895,19 @@ body.light-mode .ad-slot {
     <div class="container">
       <div class="section-header">
         <h2>Fan Polls</h2>
-        <p>Votes counted live · one vote per device</p>
+        <p>Live results with % · one vote per device</p>
       </div>
 
       <div class="poll-box" id="motm-poll" style="margin-bottom:20px">
         <h3>Man of the Match — Watford (A)</h3>
         <div class="poll-options" id="motm-options">
-          <button type="button" class="poll-option" data-poll="motm" data-val="Larin">Cyle Larin <span class="vote-count" data-count="motm-Larin">0</span></button>
-          <button type="button" class="poll-option" data-poll="motm" data-val="Bragg">Bragg <span class="vote-count" data-count="motm-Bragg">0</span></button>
-          <button type="button" class="poll-option" data-poll="motm" data-val="Peretz">Peretz <span class="vote-count" data-count="motm-Peretz">0</span></button>
-          <button type="button" class="poll-option" data-poll="motm" data-val="Harwood-Bellis">Harwood-Bellis <span class="vote-count" data-count="motm-Harwood-Bellis">0</span></button>
-          <button type="button" class="poll-option" data-poll="motm" data-val="Other">Other / no one stood out <span class="vote-count" data-count="motm-Other">0</span></button>
+          <button type="button" class="poll-option" data-poll="motm" data-val="Larin"><span class="poll-bar" data-bar="motm-Larin"></span><span class="poll-label">Cyle Larin</span><span class="poll-pct" data-pct="motm-Larin">0%</span></button>
+          <button type="button" class="poll-option" data-poll="motm" data-val="Bragg"><span class="poll-bar" data-bar="motm-Bragg"></span><span class="poll-label">Bragg</span><span class="poll-pct" data-pct="motm-Bragg">0%</span></button>
+          <button type="button" class="poll-option" data-poll="motm" data-val="Peretz"><span class="poll-bar" data-bar="motm-Peretz"></span><span class="poll-label">Peretz</span><span class="poll-pct" data-pct="motm-Peretz">0%</span></button>
+          <button type="button" class="poll-option" data-poll="motm" data-val="Harwood-Bellis"><span class="poll-bar" data-bar="motm-Harwood-Bellis"></span><span class="poll-label">Harwood-Bellis</span><span class="poll-pct" data-pct="motm-Harwood-Bellis">0%</span></button>
+          <button type="button" class="poll-option" data-poll="motm" data-val="Other"><span class="poll-bar" data-bar="motm-Other"></span><span class="poll-label">Other / no one stood out</span><span class="poll-pct" data-pct="motm-Other">0%</span></button>
         </div>
-        <p class="poll-note" id="motm-note">Tap once to vote. Totals update for everyone.</p>
+        <p class="poll-note" id="motm-note">Tap once to vote. Results update for everyone.</p>
         <div class="poll-thanks" id="motm-thanks" style="display:none">Thanks — your vote is counted.</div>
         <p style="margin-top:10px;font-size:0.8rem;color:var(--grey-500)">Total votes: <strong id="motm-total">0</strong></p>
       </div>
@@ -2878,9 +2915,9 @@ body.light-mode .ad-slot {
       <div class="poll-box" id="pred-poll">
         <h3>Prediction — Southampton vs Stoke</h3>
         <div class="poll-options" id="pred-options">
-          <button type="button" class="poll-option" data-poll="pred" data-val="H">Home win <span class="vote-count" data-count="pred-H">0</span></button>
-          <button type="button" class="poll-option" data-poll="pred" data-val="D">Draw <span class="vote-count" data-count="pred-D">0</span></button>
-          <button type="button" class="poll-option" data-poll="pred" data-val="A">Stoke win <span class="vote-count" data-count="pred-A">0</span></button>
+          <button type="button" class="poll-option" data-poll="pred" data-val="H"><span class="poll-bar" data-bar="pred-H"></span><span class="poll-label">Home win</span><span class="poll-pct" data-pct="pred-H">0%</span></button>
+          <button type="button" class="poll-option" data-poll="pred" data-val="D"><span class="poll-bar" data-bar="pred-D"></span><span class="poll-label">Draw</span><span class="poll-pct" data-pct="pred-D">0%</span></button>
+          <button type="button" class="poll-option" data-poll="pred" data-val="A"><span class="poll-bar" data-bar="pred-A"></span><span class="poll-label">Stoke win</span><span class="poll-pct" data-pct="pred-A">0%</span></button>
         </div>
         <p class="poll-note" id="pred-note">Lock in before kick-off.</p>
         <div class="poll-thanks" id="pred-thanks" style="display:none">Prediction counted.</div>
@@ -4121,7 +4158,7 @@ body.light-mode .ad-slot {
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <p>© 2026 Unofficial Fan Site • Play Up Saints • Last updated: 19 Aug 2026 – Midweek note + On This Day 19 Aug</p>
+        <p>© 2026 Unofficial Fan Site • Play Up Saints • Last updated: 19 Aug 2026 – Polls with % bars</p>
       </div>
     </div>
   </footer>
@@ -4404,78 +4441,72 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script>
 (function(){
-  var target = Date.UTC(2026, 7, 16, 12, 30, 0);
-  function pad(n){ return (n < 10 ? '0' : '') + n; }
-  function tick(){
-    var a = document.getElementById('cd-days');
-    var b = document.getElementById('cd-hours');
-    var c = document.getElementById('cd-mins');
-    var d = document.getElementById('cd-secs');
-    if (!a || !b || !c || !d) return;
-    var diff = Math.max(0, target - Date.now());
-    a.textContent = pad(Math.floor(diff / 86400000));
-    b.textContent = pad(Math.floor((diff % 86400000) / 3600000));
-    c.textContent = pad(Math.floor((diff % 3600000) / 60000));
-    d.textContent = pad(Math.floor((diff % 60000) / 1000));
-  }
-  tick();
-  setInterval(tick, 1000);
-})();
-</script>
-
-
-<script>
-(function(){
-  // Countdown to Stoke: 22 Aug 2026 15:00 UK = 14:00 UTC (BST)
   var target = new Date('2026-08-22T14:00:00Z').getTime();
   function tick(){
-    var now = Date.now();
-    var d = Math.max(0, target - now);
-    var days = Math.floor(d / 86400000);
-    var hours = Math.floor((d % 86400000) / 3600000);
-    var mins = Math.floor((d % 3600000) / 60000);
-    var secs = Math.floor((d % 60000) / 1000);
+    var d = Math.max(0, target - Date.now());
     function el(id,v){ var n=document.getElementById(id); if(n) n.textContent = v; }
-    el('cd-days', days); el('cd-hours', hours); el('cd-mins', mins); el('cd-secs', secs);
+    el('cd-days', Math.floor(d/86400000));
+    el('cd-hours', Math.floor((d%86400000)/3600000));
+    el('cd-mins', Math.floor((d%3600000)/60000));
+    el('cd-secs', Math.floor((d%60000)/1000));
   }
   tick(); setInterval(tick, 1000);
 
-  // Live vote counts via free CountAPI (no account)
-  var NS = 'saintsfanpop-2026';
+  var NS = 'saintsfanpop-v2';
   var motmKeys = ['Larin','Bragg','Peretz','Harwood-Bellis','Other'];
   var predKeys = ['H','D','A'];
 
-  function getCount(key, cb){
-    fetch('https://api.countapi.xyz/get/'+NS+'/'+key)
+  function apiGet(key){
+    return fetch('https://api.countapi.xyz/get/'+NS+'/'+key, {mode:'cors'})
       .then(function(r){ return r.json(); })
-      .then(function(d){ cb(d && typeof d.value==='number' ? d.value : 0); })
-      .catch(function(){ cb(0); });
+      .then(function(d){ return (d && typeof d.value==='number') ? d.value : 0; })
+      .catch(function(){ return null; });
   }
-  function hitCount(key, cb){
-    fetch('https://api.countapi.xyz/hit/'+NS+'/'+key)
+  function apiHit(key){
+    return fetch('https://api.countapi.xyz/hit/'+NS+'/'+key, {mode:'cors'})
       .then(function(r){ return r.json(); })
-      .then(function(d){ cb(d && typeof d.value==='number' ? d.value : 0); })
-      .catch(function(){ cb(0); });
+      .then(function(d){ return (d && typeof d.value==='number') ? d.value : 0; })
+      .catch(function(){ return null; });
   }
-  function setLabel(key, val){
-    var nodes = document.querySelectorAll('[data-count="'+key+'"]');
-    nodes.forEach(function(n){ n.textContent = val; });
+
+  // Local fallback store (shared only on this device if API fails)
+  function localGet(key){
+    try { return parseInt(localStorage.getItem('cnt_'+key)||'0',10)||0; } catch(e){ return 0; }
   }
-  function refreshTotals(prefix, keys, totalId){
-    var left = keys.length, sum = 0, vals = {};
+  function localHit(key){
+    var v = localGet(key)+1;
+    try { localStorage.setItem('cnt_'+key, String(v)); } catch(e){}
+    return v;
+  }
+
+  function render(prefix, keys, totalId, counts){
+    var sum = 0;
+    keys.forEach(function(k){ sum += (counts[k]||0); });
     keys.forEach(function(k){
-      getCount(prefix+'-'+k, function(v){
-        vals[k] = v; sum += v; setLabel(prefix+'-'+k, v);
+      var v = counts[k]||0;
+      var pct = sum > 0 ? Math.round((v/sum)*100) : 0;
+      var bar = document.querySelector('[data-bar="'+prefix+'-'+k+'"]');
+      var lab = document.querySelector('[data-pct="'+prefix+'-'+k+'"]');
+      if(bar) bar.style.width = pct + '%';
+      if(lab) lab.textContent = pct + '%';
+    });
+    var t = document.getElementById(totalId);
+    if(t) t.textContent = sum;
+  }
+
+  function refresh(prefix, keys, totalId){
+    var counts = {}, left = keys.length, useLocal = false;
+    keys.forEach(function(k){
+      apiGet(prefix+'-'+k).then(function(v){
+        if(v === null){ useLocal = true; v = localGet(prefix+'-'+k); }
+        counts[k] = v;
         left--;
-        if(left===0){
-          var t = document.getElementById(totalId);
-          if(t) t.textContent = sum;
-        }
+        if(left===0) render(prefix, keys, totalId, counts);
       });
     });
   }
 
-  function setupPoll(pollKey, keys, thanksId, noteId, totalId){
+  function setup(pollKey, keys, thanksId, noteId, totalId){
     var storageKey = 'saints_voted_'+pollKey;
     var saved = localStorage.getItem(storageKey);
     var opts = document.querySelectorAll('[data-poll="'+pollKey+'"]');
@@ -4484,7 +4515,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if(saved && saved===val) btn.classList.add('selected');
       btn.addEventListener('click', function(){
         if(localStorage.getItem(storageKey)){
-          // already voted on this device — only highlight, don't double-count
           opts.forEach(function(b){ b.classList.remove('selected'); });
           btn.classList.add('selected');
           return;
@@ -4492,27 +4522,28 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem(storageKey, val);
         opts.forEach(function(b){ b.classList.remove('selected'); });
         btn.classList.add('selected');
-        hitCount(pollKey+'-'+val, function(v){
-          setLabel(pollKey+'-'+val, v);
-          refreshTotals(pollKey, keys, totalId);
+        var key = pollKey+'-'+val;
+        apiHit(key).then(function(v){
+          if(v === null) localHit(key);
+          refresh(pollKey, keys, totalId);
         });
-        var t = document.getElementById(thanksId);
+        var th = document.getElementById(thanksId);
         var n = document.getElementById(noteId);
-        if(t) t.style.display='block';
+        if(th) th.style.display='block';
         if(n) n.style.display='none';
       });
     });
     if(saved){
-      var t = document.getElementById(thanksId);
+      var th = document.getElementById(thanksId);
       var n = document.getElementById(noteId);
-      if(t) t.style.display='block';
+      if(th) th.style.display='block';
       if(n) n.style.display='none';
     }
-    refreshTotals(pollKey, keys, totalId);
+    refresh(pollKey, keys, totalId);
   }
 
-  setupPoll('motm', motmKeys, 'motm-thanks', 'motm-note', 'motm-total');
-  setupPoll('pred', predKeys, 'pred-thanks', 'pred-note', 'pred-total');
+  setup('motm', motmKeys, 'motm-thanks', 'motm-note', 'motm-total');
+  setup('pred', predKeys, 'pred-thanks', 'pred-note', 'pred-total');
 })();
 </script>
 
